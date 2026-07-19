@@ -86,6 +86,7 @@ const PLACES=[
   {name:"Teshima Art Museum",city:"Teshima",cat:"art",meal:"visit",note:"Water beads from floor. Book in advance."},
   {name:"Les Archives du Coeur",city:"Teshima",cat:"art",meal:"visit",note:"Boltanski. 90,000 heartbeats archived."},
   {name:"ZENBI Kagizen Museum",city:"Kyoto",cat:"art",meal:"visit",note:"Mingei ceramics. Kawai Kanjiro legacy."},
+  {name:"PONTE — verre soufflé",city:"Kyoto",cat:"craft",meal:"shop",note:"Blown glass gallery directly across from ZENBI Kagizen Museum. Sublime hand-blown glassware. Easy pairing with the Kagizen visit.",tags:[]},
   {name:"Fushimi Inari Taisha",city:"Kyoto",cat:"temple",meal:"visit",note:"6:30am. Climb to top. Sake at summit."},
   {name:"Arashiyama Bamboo Grove",city:"Kyoto",cat:"temple",meal:"visit",note:"Before 9am. Empty gates, mist."},
   {name:"Kinkaku-ji",city:"Kyoto",cat:"temple",meal:"visit",note:"9am. Gold leaf + November maple."},
@@ -582,6 +583,52 @@ const DAYS=[
 const KEY="jp26_v5";
 
 // Helpers
+const BUYS = [
+  {cat:"🍵 Coffee & tea",items:[
+    {name:"Glitch Coffee beans",note:"Single origin light roast. Ginza or Jimbocho. Buy a bag to take home.",city:"Tokyo"},
+    {name:"Onibus Coffee beans",note:"Specialty roaster, Nakameguro. Great for gifts.",city:"Tokyo"},
+    {name:"Iyoshi Cola",note:"Japanese craft cola — complex, spiced, adult. Find at Azabudai Hills Market or specialty food stores.",city:"Tokyo"},
+    {name:"Hario V60 dripper or carafe",note:"Hario's own café in Higashiyama. Direct from the source.",city:"Kyoto"},
+    {name:"Ogawa Coffee beans",note:"Kyoto's most respected coffee house. Shimokitazawa and Kyoto locations.",city:"Both"},
+  ]},
+  {cat:"🧴 Beauty & pharmacy",items:[
+    {name:"Hada Labo Gokujyun lotion",note:"Japan's #1 hyaluronic acid toner. Matsumoto Kiyoshi or Sundrug. Bulk buy.",city:"Tokyo"},
+    {name:"Biore UV Aqua Rich sunscreen",note:"Japan formulation is lighter and better than export version. Any pharmacy.",city:"Tokyo"},
+    {name:"Curél face cream",note:"Best Japanese gentle moisturiser. Only from Matsumoto Kiyoshi or Welcia in Japan.",city:"Tokyo"},
+    {name:"Decorté AQ moisturiser",note:"Japan's quiet luxury skincare. Counter at Isetan. The one everyone brings back.",city:"Tokyo"},
+    {name:"Kiehl's Japan exclusives",note:"Japan-only formulas not available elsewhere. Harajuku or Shibuya.",city:"Tokyo"},
+    {name:"Canmake eyeshadow palettes",note:"Under 1,000 yen. Best affordable Japanese makeup. Matsumoto Kiyoshi.",city:"Tokyo"},
+    {name:"Three Aoyama facial oil",note:"Japanese organic. Minimalist Aoyama flagship. The balm is the one.",city:"Tokyo"},
+    {name:"Lion Top Stain Remover",note:"Japan's legendary stain remover. Works on everything. Any pharmacy or supermarket.",city:"Tokyo"},
+  ]},
+  {cat:"🏺 Craft & design",items:[
+    {name:"Kaikado tea caddy",note:"130 steps by hand. Since 1875. Bring a specific size in mind — they'll engrave it.",city:"Kyoto"},
+    {name:"Aritsugu knife",note:"Since 1560. Nishiki Market. Name engraved while you wait. Bring a budget.",city:"Kyoto"},
+    {name:"Kamiji Kakimoto washi paper",note:"Finest washi for gifting, writing, wrapping. Teramachi-dori.",city:"Kyoto"},
+    {name:"APFR fragrance",note:"Hand-crafted home fragrance. 120-year townhouse on Teramachi. Buy candles and room spray.",city:"Kyoto"},
+    {name:"Lisn incense",note:"150+ scents from 30 yen/stick. Customize your own mix. COCON Karasuma.",city:"Kyoto"},
+    {name:"Traditional Crafts Aoyama Square",note:"100+ craft types in one place. 3-min from Aoyama-Itchome. Good for unique gifts.",city:"Tokyo"},
+  ]},
+  {cat:"🧥 Fashion & vintage",items:[
+    {name:"Taiga Takahashi piece",note:"Gion, Kyoto. Back alley off Hanamikoji. Vintage workwear in rare fabrics. If something speaks to you.",city:"Kyoto"},
+    {name:"Vintage QOO Omotesando",note:"6,000 items. Chanel B1F. Best archive luxury selection. Tax-free.",city:"Tokyo"},
+    {name:"DSM Ginza exclusive",note:"CDG, Alaïa, The Row. Japan-exclusive colourways and pieces.",city:"Tokyo"},
+    {name:"Lemaire Ebisu",note:"1960s former residence converted to store. Shoji screens. Japan exclusives.",city:"Tokyo"},
+  ]},
+  {cat:"🍫 Food & drink to take home",items:[
+    {name:"Kit Kat Japan flavours",note:"Matcha, sake, strawberry, regional editions. Don Quijote or airport. Don't overpay at the airport.",city:"Tokyo"},
+    {name:"Calbee regional chips",note:"Tokyo, Kyoto, Hiroshima regional flavours. Convenience stores.",city:"Both"},
+    {name:"Japanese whisky mini bottles",note:"Yamazaki, Hibiki, Nikka. Duty-free at Haneda. Easier than hunting in the city.",city:"Airport"},
+    {name:"Matcha powder — Marukyu Koyamaen",note:"The reference matcha for cooking and drinking. Nishiki Market or Kyoto station.",city:"Kyoto"},
+    {name:"Nishiki pickles — tsukemono",note:"Bring a small selection home. Nishiki Market. Ask which keep well in transit.",city:"Kyoto"},
+  ]},
+  {cat:"📚 Books & stationery",items:[
+    {name:"Daikanyama T-Site art book",note:"Find something you can't get anywhere else. Photography, architecture, fashion. Budget ¥5,000.",city:"Tokyo"},
+    {name:"Cowbooks Nakameguro",note:"Curated second-hand. One perfect object.",city:"Tokyo"},
+    {name:"Hobonichi Techo",note:"Japan's most beloved planner/journal. Flagship in Minami-Aoyama or Loft.",city:"Tokyo"},
+  ]},
+];
+
 function mapsUrl(name) {
   const ky=["Gion","Fushimi","Arashiyama","Kinkaku","Nakamura","Mizai","Bee","Hachimonjiya","Miyoshi","Mouriya","Okutan","Kagizen","Kaikado","Kamiji","Wife","Nishiki","Yamatoya","1G","Kyoto","Kyourakutei","MAKANAI","Tenryu","Pontocho","Sowaka"];
   const na=["Naoshima","Chichu","Benesse","Lee Ufan","Valley Gallery","Ando Museum","Art House"];
@@ -601,36 +648,11 @@ function PL({name,style}) {
 
 // Navigation
 function Tabs({view,setView,counts}) {
-  const tabs=[["today","Today"],["build","Build"],["must","Must"],["archive","Archive"],["pack","Pack"],["book","Booking"],["map","Map"],["buys","Buys"],["plan","Plan"]];
+  const tabs=[["build","Build"],["must","Must"],["archive","Archive"],["pack","Pack"],["book","Booking"],["map","Map"],["buys","Buys"]];
   return <div style={{display:"flex",overflowX:"auto",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",borderBottom:"1px solid "+BORD,background:PALE}}>{tabs.map(([v,l])=><button key={v} onClick={()=>setView(v)} style={{padding:"0 14px",height:"44px",border:"none",background:"transparent",fontFamily:"monospace",fontSize:"11px",letterSpacing:"0.06em",textTransform:"uppercase",color:view===v?GOLD:MID,borderBottom:view===v?"2px solid "+GOLD:"2px solid transparent",cursor:"pointer",whiteSpace:"nowrap",flexShrink:0}}>{l}{counts?.[v]>0?" ("+counts[v]+")":""}</button>)}</div>;
 }
 
-// Views
-function TodayView({notes,setNotes,kept}) {
-  const start=new Date("2026-11-13"),today=new Date();
-  const diff=Math.floor((today-start)/86400000);
-  const [idx,setIdx]=useState(Math.max(0,Math.min(diff,DAYS.length-1)));
-  const day=DAYS[idx],w=WEATHER[day?.date];
-  const dk=kept.filter(k=>k.date===day?.date);
-  return <div style={{padding:"1rem 1rem 5rem"}}>
-    <div style={{display:"flex",overflowX:"auto",gap:"6px",paddingBottom:"10px",scrollbarWidth:"none"}}>
-      {DAYS.map((d,i)=><button key={i} onClick={()=>setIdx(i)} style={{padding:"6px 12px",borderRadius:"20px",border:"1px solid "+(i===idx?GOLD:BORD),background:i===idx?GOLD:CARD,color:i===idx?"#fff":MID,fontFamily:"monospace",fontSize:"10px",flexShrink:0,cursor:"pointer"}}>{d.date}</button>)}
-    </div>
-    <div style={{background:"#EDE7DC",borderRadius:"12px",padding:"1rem",marginBottom:"1rem",display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
-      <div><div style={{fontFamily:"monospace",fontSize:"10px",color:GOLD,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"4px"}}>{day?.date} · {day?.hotel}</div><div style={{fontSize:"1rem",color:DARK,fontWeight:"500",lineHeight:1.3}}>{day?.title}</div></div>
-      {w&&<div style={{textAlign:"right",flexShrink:0,paddingLeft:"12px"}}><div style={{fontSize:"1.8rem"}}>{w.icon}</div><div style={{fontFamily:"monospace",fontSize:"10px",color:GOLD}}>{w.lo}–{w.hi}°C</div><div style={{fontSize:"10px",color:MID,marginTop:"2px",maxWidth:"90px",lineHeight:1.3}}>{w.note}</div></div>}
-    </div>
-    <div style={{marginBottom:"1rem"}}>
-      <div style={{fontFamily:"monospace",fontSize:"10px",color:GOLD,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"8px"}}>Fixed programme</div>
-      {day?.fixed?.map((f,i)=><div key={i} style={{display:"flex",gap:"10px",padding:"8px 0",borderBottom:"1px solid "+BORD,alignItems:"flex-start"}}>
-        <div style={{fontFamily:"monospace",fontSize:"9px",color:MID,minWidth:"52px",paddingTop:"2px",flexShrink:0}}>{f.time}</div>
-        <div><div style={{fontSize:"13px",color:DARK,fontWeight:"500"}}>{f.name}</div>{f.note&&<div style={{fontSize:"11px",color:MID,fontStyle:"italic",marginTop:"2px",lineHeight:1.4}}>{f.note}</div>}</div>
-      </div>)}
-    </div>
-    {dk.length>0&&<div style={{marginBottom:"1rem"}}><div style={{fontFamily:"monospace",fontSize:"10px",color:GRN,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"8px"}}>Your confirmed choices</div>{dk.map((k,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:"8px",padding:"8px 0",borderBottom:"1px solid "+BORD}}><div style={{width:"8px",height:"8px",borderRadius:"50%",background:GRN,flexShrink:0}}/><PL name={k.name} style={{fontSize:"14px"}}/></div>)}</div>}
-    <div><div style={{fontFamily:"monospace",fontSize:"10px",color:GOLD,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"6px"}}>Journal</div><textarea value={notes[day?.date]||""} onChange={e=>setNotes(p=>({...p,[day.date]:e.target.value}))} placeholder="Write it here while it's fresh…" style={{width:"100%",minHeight:"100px",padding:"10px 12px",background:CARD,border:"1px solid "+BORD,borderRadius:"8px",fontFamily:"inherit",fontSize:"14px",color:DARK,lineHeight:1.6,resize:"vertical",outline:"none",boxSizing:"border-box"}}/></div>
-  </div>;
-}
+
 function OCard({opt,state,onToggle,musts,toggleMust,onScratch,onMove,isBooked,onBook,editMode,onEdit}) {
   const kept=state==="kept",isMust=musts?.[opt.id];
   return <div onClick={onToggle} style={{padding:"10px 12px",marginBottom:"6px",border:"1px solid "+(kept?GOLD:BORD),borderRadius:"6px",background:kept?"#FBF4E4":CARD,cursor:"pointer",minHeight:"44px",borderLeft:isMust?"3px solid "+RED:kept?"3px solid "+GOLD:"3px solid transparent"}}>
@@ -757,7 +779,7 @@ function BuildView({days,setDays,selections,setSelections,musts,setMusts,scratch
                 </div>:f.note&&<div style={{fontSize:"11px",color:MID,fontStyle:"italic",lineHeight:1.5,marginTop:"2px"}}>{f.note}</div>}
               </div>
             </div>)}
-            {day.fixed.filter(f=>hiddenFixed[f.id]).length>0&&<div style={{paddingLeft:"60px",marginTop:"4px"}}>{day.fixed.filter(f=>hiddenFixed[f.id]).map(f=><span key={f.id} style={{fontSize:"11px",color:MID,textDecoration:"line-through",marginRight:"8px"}}>{f.name} <button onClick={()=>setHiddenFixed(p=>({...p,[f.id]:false}))} style={{background:"none",border:"none",cursor:"pointer",color:GOLD,fontSize:"10px"}}>↩</button></span>)}</div>}
+            {day.fixed.filter(f=>hiddenFixed[f.id]).length>0&&<div style={{paddingLeft:"60px",marginTop:"4px"}}>{day.fixed.filter(f=>hiddenFixed[f.id]).map(f=><span key={f.id} style={{fontSize:"11px",color:MID,textDecoration:"line-through",marginRight:"8px"}}>{f.name} <button onClick={()=>setHiddenFixed(p=>({...p,[f.id]:false}))} style={{background:"none",border:"none",cursor:"pointer",color:GOLD,fontSize:"10px"}} title="Restore">↩</button> <button onClick={()=>{if(confirm("Delete \""+f.name+"\" permanently?")){setDays(prev=>prev.map(d=>d.date!==day.date?d:{...d,fixed:d.fixed.filter(x=>x.id!==f.id)}));}}} style={{background:"none",border:"none",cursor:"pointer",color:"#C88",fontSize:"10px"}} title="Delete permanently">✕</button></span>)}</div>}
             <AddFixed onAdd={item=>setDays(prev=>prev.map(d=>d.date!==day.date?d:{...d,fixed:[...d.fixed,item]}))}/>
             {editMode&&(addingFixed===day.date
               ? <div style={{display:"flex",flexDirection:"column",gap:"6px",marginTop:"6px",padding:"8px",border:"1px solid "+GOLD,borderRadius:"6px",background:"#FDFAF6"}} onClick={e=>e.stopPropagation()}>
@@ -771,10 +793,14 @@ function BuildView({days,setDays,selections,setSelections,musts,setMusts,scratch
               : <button onClick={()=>{setAddingFixed(day.date);setAddName("");setAddTime("");}} style={{width:"100%",padding:"8px",border:"1px dashed "+GOLD,borderRadius:"6px",background:"transparent",color:GOLD,fontFamily:"Georgia,serif",fontSize:"12px",cursor:"pointer",marginTop:"6px"}}>+ Add fixed item</button>
             )}
           </div>}
+          <div style={{marginBottom:"14px"}}>
+            <div style={{fontFamily:"monospace",fontSize:"9px",color:GOLD,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"6px"}}>Day notes</div>
+            <textarea value={notes[day.date]||""} onChange={e=>setNotes(p=>({...p,[day.date]:e.target.value}))} placeholder="Jot anything here — a reminder, a thought, a change of plan…" style={{width:"100%",minHeight:"56px",padding:"8px 10px",background:CARD,border:"1px solid "+BORD,borderRadius:"6px",fontFamily:"Georgia,serif",fontSize:"12px",color:DARK,lineHeight:1.5,resize:"vertical",outline:"none",boxSizing:"border-box"}}/>
+          </div>
           {day.choices.map((ch,ci)=><div key={ci} style={{marginBottom:"12px",padding:"12px",background:CARD,border:"1px solid "+BORD,borderRadius:"6px"}}>
             <div style={{fontFamily:"monospace",fontSize:"9px",letterSpacing:"0.12em",textTransform:"uppercase",color:"#8A6430",marginBottom:"10px",borderBottom:"1px solid "+BORD,paddingBottom:"8px"}}>{ch.label} <span style={{color:MID}}>· pick {ch.pick===1?"one":"up to "+ch.pick}</span></div>
             {ch.options.filter(o=>!scratched[o.id]).map(opt=><OCard key={opt.id} opt={opt} state={selections[opt.id]||"neutral"} onToggle={()=>toggleSelect(opt.id,ch.options,ch.pick===1)} musts={musts} toggleMust={id=>setMusts(p=>({...p,[id]:!p[id]}))} onScratch={()=>{setScratched(p=>({...p,[opt.id]:true}));if(selections[opt.id]==="kept")setSelections(p=>({...p,[opt.id]:"neutral"}));}} onMove={()=>setMoveSheet({optId:opt.id,optName:opt.name,fromDate:day.date,fromLabel:ch.label,opt})} isBooked={booked?.[opt.id]} onBook={(id)=>setBooked(b=>({...b,[id]:!b[id]}))} editMode={editMode} onEdit={(updated)=>setDays(ds=>ds.map(d=>({...d,choices:d.choices.map(ch=>({...ch,options:ch.options.map(op=>op.id===updated.id?updated:op)}))})))}/>)}
-            {ch.options.filter(o=>scratched[o.id]).length>0&&<div style={{paddingTop:"6px",borderTop:"1px dashed #E2DDD4",marginTop:"6px"}}><div style={{fontFamily:"monospace",fontSize:"9px",color:MID,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"4px"}}>In archive</div>{ch.options.filter(o=>scratched[o.id]).map(o=><span key={o.id} style={{fontSize:"11px",color:MID,textDecoration:"line-through",marginRight:"8px"}}>{o.name} <button onClick={()=>setScratched(p=>({...p,[o.id]:false}))} style={{background:"none",border:"none",cursor:"pointer",color:GOLD,fontSize:"10px"}}>↩</button></span>)}</div>}
+            {ch.options.filter(o=>scratched[o.id]).length>0&&<div style={{paddingTop:"6px",borderTop:"1px dashed #E2DDD4",marginTop:"6px"}}><div style={{fontFamily:"monospace",fontSize:"9px",color:MID,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"4px"}}>In archive</div>{ch.options.filter(o=>scratched[o.id]).map(o=><span key={o.id} style={{fontSize:"11px",color:MID,textDecoration:"line-through",marginRight:"8px"}}>{o.name} <button onClick={()=>setScratched(p=>({...p,[o.id]:false}))} style={{background:"none",border:"none",cursor:"pointer",color:GOLD,fontSize:"10px"}} title="Restore">↩</button> <button onClick={()=>{if(confirm("Delete \""+o.name+"\" permanently?")){setDays(prev=>prev.map(d=>d.date!==day.date?d:{...d,choices:d.choices.map(c=>c.label!==ch.label?c:{...c,options:c.options.filter(x=>x.id!==o.id)})}));}}} style={{background:"none",border:"none",cursor:"pointer",color:"#C88",fontSize:"10px"}} title="Delete permanently">✕</button></span>)}</div>}
             {editMode&&(addingOpt===day.date+":"+ci
               ? <div style={{display:"flex",gap:"6px",marginBottom:"6px"}} onClick={e=>e.stopPropagation()}>
                   <input autoFocus value={addName} onChange={e=>setAddName(e.target.value)} placeholder="Option name…" onKeyDown={e=>{if(e.key==="Enter"&&addName.trim()){setDays(prev=>prev.map(d=>d.date!==day.date?d:{...d,choices:d.choices.map((c,ci)=>ci!==parseInt(addingOpt.split(":")[1])?c:{...c,options:[...c.options,{id:"u"+Date.now(),name:addName.trim(),note:"",tags:[]}]})}));setAddName("");setAddingOpt(null);}if(e.key==="Escape")setAddingOpt(null);}} style={{flex:1,padding:"6px 8px",border:"1px solid "+GOLD,borderRadius:"4px",fontFamily:"Georgia,serif",fontSize:"12px",color:DARK}}/>
@@ -911,33 +937,7 @@ function MapView() {
     </div>)}</div>
   </div>;
 }
-function PlanView({days,selections,musts,notes}) {
-  const kept=days.flatMap(day=>day.choices.flatMap(ch=>ch.options.filter(o=>selections[o.id]==="kept").map(o=>({...o,date:day.date}))));
-  const mustItems=days.flatMap(day=>[...day.fixed.filter(f=>musts[f.id]).map(f=>({name:f.name,date:day.date})),...day.choices.flatMap(ch=>ch.options.filter(o=>musts[o.id]).map(o=>({name:o.name,date:day.date})))]);
-  return <div style={{padding:"1rem 1rem 5rem"}}>
-    {mustItems.length>0&&<div style={{marginBottom:"20px",padding:"12px",background:"#FAEAE6",border:"1px solid "+RED+"40",borderLeft:"4px solid "+RED,borderRadius:"0 8px 8px 0"}}><div style={{fontFamily:"monospace",fontSize:"9px",color:RED,letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:"8px"}}>Must not miss</div>{mustItems.map((m,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px"}}><span style={{fontFamily:"monospace",fontSize:"9px",color:RED,width:"44px"}}>{m.date}</span><PL name={m.name} style={{fontSize:"13px"}}/></div>)}</div>}
-    <div style={{fontSize:"17px",color:DARK,fontStyle:"italic",marginBottom:"12px"}}>Your confirmed choices</div>
-    {kept.length===0?<div style={{color:MID,fontStyle:"italic",textAlign:"center",padding:"2rem 0"}}>No choices confirmed yet. Go to Build and tap options.</div>:<div>{DAYS.map(td=>{
-      const dk=kept.filter(k=>k.date===td.date),note=notes[td.date];
-      if(!dk.length&&!note) return null;
-      return <div key={td.date} style={{marginBottom:"16px",padding:"12px 14px",background:CARD,border:"1px solid "+BORD,borderRadius:"8px"}}>
-        <div style={{fontFamily:"monospace",fontSize:"9px",color:GOLD,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"4px"}}>{td.date}</div>
-        <div style={{fontSize:"14px",color:DARK,fontWeight:"500",marginBottom:"10px"}}>{td.title}</div>
-        <div style={{marginBottom:"8px"}}>
-          {td.fixed?.map((f,i)=><div key={i} style={{display:"flex",gap:"8px",padding:"4px 0",fontSize:"12px",color:DARK}}>
-            <span style={{fontFamily:"monospace",fontSize:"9px",color:MID,minWidth:"48px",flexShrink:0,paddingTop:"2px"}}>{f.time}</span>
-            <div><div style={{fontWeight:"500"}}>{f.name}</div>{f.note&&<div style={{fontSize:"11px",color:MID,fontStyle:"italic",lineHeight:1.4}}>{f.note}</div>}</div>
-          </div>)}
-        </div>
-        {dk.length>0&&<div style={{borderTop:"1px solid "+BORD,paddingTop:"8px",marginTop:"4px"}}>
-          <div style={{fontFamily:"monospace",fontSize:"9px",color:GRN,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"6px"}}>Confirmed choices</div>
-          {dk.map((item,i)=><div key={i} style={{paddingLeft:"12px",borderLeft:"2px solid "+GOLD,marginBottom:"6px"}}><PL name={item.name} style={{fontSize:"13px"}}/></div>)}
-        </div>}
-        {note&&<div style={{marginTop:"8px",fontSize:"12px",color:DARK,fontStyle:"italic",lineHeight:1.6,padding:"8px",background:PALE,borderRadius:"4px",whiteSpace:"pre-wrap"}}>{note}</div>}
-      </div>;
-    })}</div>}
-  </div>;
-}
+
 function BuysView() {
   const [checked,setChecked]=useState({});
   const [custom,setCustom]=useState([]);
@@ -1031,6 +1031,22 @@ function BuysView() {
 }
 
 // Root app
+class ErrorBoundary extends React.Component {
+  constructor(p){super(p);this.state={error:null};}
+  static getDerivedStateFromError(error){return {error};}
+  render(){
+    if(this.state.error){
+      return React.createElement("div",{style:{padding:"2rem 1.5rem",fontFamily:"Georgia,serif"}},
+        React.createElement("div",{style:{fontFamily:"monospace",fontSize:"11px",color:"#B84A4A",letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:"10px"}},"Something broke"),
+        React.createElement("div",{style:{fontSize:"14px",color:"#2C2420",lineHeight:1.6,marginBottom:"16px"}},"This screen hit an error. Your data is safe — tap below to reload."),
+        React.createElement("pre",{style:{fontSize:"10px",color:"#7A6E64",background:"#F5F0E8",padding:"10px",borderRadius:"6px",overflow:"auto",marginBottom:"16px",whiteSpace:"pre-wrap"}},String(this.state.error?.message||this.state.error)),
+        React.createElement("button",{onClick:()=>window.location.reload(),style:{padding:"10px 20px",background:"#B8924A",border:"none",borderRadius:"20px",color:"#fff",fontFamily:"monospace",fontSize:"12px",cursor:"pointer"}},"Reload")
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
   const [days,setDays]=useState(DAYS);
   const [selections,setSelections]=useState({});
@@ -1091,10 +1107,10 @@ export default function App() {
           {shareMode&&syncStatus&&<div style={{fontFamily:"monospace",fontSize:"9px",color:syncStatus==="synced"?GRN:syncStatus==="error"?RED:GOLD}}>{syncStatus==="syncing"?"syncing…":syncStatus==="synced"?"synced":"deploy to bolt.new"}</div>}
         </div>
       </div>
-      <Tabs view={view} setView={setView} counts={{must:mustCount,archive:archiveCount,plan:kept.length}}/>
+      <Tabs view={view} setView={setView} counts={{must:mustCount,archive:archiveCount}}/>
     </div>
+    <ErrorBoundary>
     <div>
-      {view==="today"&&<TodayView notes={notes} setNotes={setNotes} kept={kept}/>}
       {view==="build"&&<BuildView days={days} setDays={setDays} selections={selections} setSelections={setSelections} musts={musts} setMusts={setMusts} scratched={scratched} setScratched={setScratched} hiddenFixed={hiddenFixed} setHiddenFixed={setHiddenFixed} notes={notes} setNotes={setNotes} editMode={editMode} booked={booked} setBooked={setBooked}/>}
       {view==="must"&&<MustView days={days} selections={selections} musts={musts} setMusts={setMusts}/>}
       {view==="archive"&&<ArchiveView days={days} scratched={scratched} setScratched={setScratched}/>}
@@ -1102,7 +1118,8 @@ export default function App() {
       {view==="book"&&<BookingView/>}
       {view==="map"&&<MapView/>}
       {view==="buys"&&<BuysView/>}
-      {view==="plan"&&<PlanView days={days} selections={selections} musts={musts} notes={notes}/>}
+      
     </div>
+    </ErrorBoundary>
   </div>;
 }
