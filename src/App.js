@@ -11,7 +11,9 @@ const TAG_STYLES={D:{bg:"#EDE8F5",color:"#5B3FA8",border:"#C4B4E8",label:"Dua Li
 const WEATHER={"Nov 13":{icon:"🌤",lo:8,hi:14,note:"Cool, clear. First day."},"Nov 14":{icon:"🌤",lo:8,hi:14,note:"Good for east Tokyo."},"Nov 15":{icon:"🌥",lo:7,hi:13,note:"Shimokitazawa morning."},"Nov 16":{icon:"🌤",lo:7,hi:13,note:"Aoyama morning. Shinkansen to Kyoto 3–4pm."},"Nov 17":{icon:"🌤",lo:9,hi:15,note:"Perfect Fushimi Inari dawn."},"Nov 18":{icon:"⛅",lo:10,hi:16,note:"Hiroshima + Miyajima. Best weather for the torii."},"Nov 19":{icon:"🌤",lo:14,hi:18,note:"Kinkaku-ji morning → Naoshima afternoon."},"Nov 20":{icon:"🌤",lo:15,hi:19,note:"Chichu + Lee Ufan + Valley Gallery. Arrive Toky…"},"Nov 21":{icon:"🌥",lo:7,hi:12,note:"Tokyo cool. Neighbourhood day."},"Nov 22":{icon:"🌥",lo:7,hi:12,note:"Tokyo. Final dinner."},"Nov 23":{icon:"🌤",lo:6,hi:11,note:"Clear for departure."}};
 const BOOKING=[
   {name:"Sumo stable training",when:"NOW",date:"Nov 14",urgency:"critical",how:"Magical Trip or Wabunka online"},
-  {name:"JR Pass 14-day",when:"NOW — before Japan",date:"All",urgency:"critical",how:"jrpass.com — must buy outside Japan"},
+  {name:"JR Pass 14-day — VERIFY FIRST",when:"Decide before buying",date:"All",urgency:"critical",how:"¥80,000 and excludes Nozomi (slower Hikari only). Your legs total ~¥60–65k point-to-point — SmartEX app is likely cheaper AND faster. Run the numbers before jrpass.com"},
+  {name:"Visit Japan Web QR code",when:"Before departure",date:"All",urgency:"critical",how:"visitjapan.digital.go.jp — pre-register immigration + customs, save QR offline"},
+  {name:"Apps: Go taxi · Tabelog · offline packs",when:"Before departure",date:"All",urgency:"medium",how:"Go for taxis, Tabelog for late-availability tables, Google Maps + Translate offline packs for Tokyo/Kyoto"},
   {name:"Suica on iPhone",when:"Before departure",date:"All",urgency:"critical",how:"Wallet → Add Card → Transit Card"},
   {name:"eSIM card",when:"Before departure",date:"All",urgency:"critical",how:"Holafly or Ubigi or Japan Experience"},
   {name:"Higashiazabu Amamoto",when:"July 1 · 1am London",date:"Nov 14",urgency:"critical",how:"Omakase app — be ready exactly on time"},
@@ -22,9 +24,7 @@ const BOOKING=[
   {name:"Teshima Art Museum",when:"Aug–Sep 2026",date:"Nov 20",urgency:"high",how:"teshima-artmuseum.jp — timed slots"},
   {name:"Miyoshi Gion — wagyu kaiseki",when:"Aug–Sep 2026",date:"Nov 17/18",urgency:"high",how:"TableAll — DO NOT MISS"},
   {name:"Jambo Hanare",when:"Aug–Sep 2026",date:"Nov 15–16",urgency:"high",how:"TableAll + pre-order Chateaubriand"},
-  {name:"Cignale Enoteca",when:"Aug–Sep 2026",date:"Nov 15–16",urgency:"high",how:"TableAll — Italian-Japanese omakase"},
-  {name:"teamLab Borderless",when:"Aug–Sep 2026",date:"Nov 14",urgency:"high",how:"teamlab.art — timed entry"},
-  {name:"Toyosu tuna auction",when:"First week of October",date:"Nov 14 5:45am",urgency:"high",how:"Toyosu Market website (English)"},
+    {name:"Toyosu tuna auction",when:"First week of October",date:"Nov 14 5:45am",urgency:"high",how:"Toyosu Market website (English)"},
   {name:"Sushidokoro Yamato",when:"Sep–Oct midnight drop",date:"Nov 15",urgency:"high",how:"TableAll or OMAKASE app"},
   {name:"Art House Project tickets",when:"On Naoshima arrival",date:"Nov 20",urgency:"high",how:"Honmura Lounge on island"},
   {name:"Gen Yamamoto",when:"1 month before (Oct)",date:"Nov 22",urgency:"medium",how:"Email office@genyamamoto.jp 30 days out"},
@@ -230,13 +230,10 @@ const DAYS=[
    choices:[
      {label:"Lunch — first meal in Japan",pick:1,options:[
        {id:"l1a",name:"Sushi Dai — Tsukiji",note:"Original market sushi counter. Queue early.",tags:[]},
+       {id:"l1a2",name:"Maguroya Kurogin — Tsukiji",note:"Bluefin tuna specialist. Kama-toro, otoro, chu-toro filleted right in front of you. Standing counter. Arrive before 10am to avoid the worst of the queue.",tags:[]},
        {id:"l1b",name:"Yama Yama — Tsukiji",note:"Thick egg tamago sando, fresh tuna bowl.",tags:[]},
        {id:"l1c",name:"Fuunji ramen — Shinjuku",note:"Tsukemen dipping ramen. Japan's best. 15-min queue.",tags:[]},
        {id:"l1d",name:"Skip lunch — too jet-lagged",note:"Arrive 6:50am. Body says no.",tags:[]},
-     ]},
-     {label:"Tonight — group of 6 or couple?",pick:1,options:[
-       {id:"s1a",name:"Group of 6 🎉",note:"Pick a group dinner below.",tags:["GROUP"]},
-       {id:"s1b",name:"Just the two of you 🥂",note:"Pick a couple dinner below.",tags:["ARTHUR"]},
      ]},
      {label:"Birthday dinner — GROUP of 6",pick:1,options:[
        
@@ -256,9 +253,8 @@ const DAYS=[
        {id:"c1e",name:"Pigneto — Four Seasons Otemachi",note:"Italian terrace, Imperial Palace views. Virtù cocktails on 39th floor after.",tags:["YOU","ARTHUR"]},
      ]},
      {label:"Birthday activity",pick:1,options:[
-       {id:"b1a",name:"Shibuya Sky — rooftop at sunset",note:"Open-air rooftop 229m up. Tokyo at golden hour with the crossing below. Book timed entry.",tags:["ARTHUR"]},
+       {id:"b1a",name:"Shibuya Sky — rooftop at sunset",note:"Open-air rooftop 229m up. Tokyo at golden hour with the crossing below. November sunset is ~4:30pm — book the ~3:45pm slot for daylight-to-night.",tags:["ARTHUR"]},
        {id:"b1b",name:"teamLab Planets — immersive art",note:"Walk through knee-deep water into infinite mirror spaces. Magical for a group or couple. Book ahead.",tags:["GROUP","BOOK","ARTHUR"]},
-       {id:"b1c",name:"Karaoke — Shidax or Big Echo",note:"Private room, all-you-can-drink, tambourines. Quintessential Tokyo group night.",tags:["GROUP"]},
        
        {id:"b1e",name:"Skip — dinner and bed",note:"12-hour flight. A great dinner is enough.",tags:[]},
      ]},
@@ -277,6 +273,11 @@ const DAYS=[
      {id:"f2d",time:"6:30pm",name:"Higashiazabu Amamoto",note:"The dinner of the trip (couple only). Book July 1 at 1am London. Small counter.",tags:["BOOK","OMAKASE"]},
    ],
    choices:[
+     {label:"Dawn start — optional",pick:1,options:[
+       {id:"t2a",name:"Toyosu tuna auction — 5:45am",note:"Observation deck slot (book first week of Oct, official Toyosu site). Auction runs 5:45–6:15 — leave by 7:00 and a taxi makes the 7:30 sumo stable in Ryogoku. Ambitious but doable.",tags:["BOOK","CUSTOM"]},
+       {id:"t2b",name:"Toyosu auction + sushi breakfast — skip the stable rush",note:"Auction then breakfast at Sushi Dai or Daiwa Sushi in the market, join the day at Hokusai Museum at 10am. Only if the sumo stable didn't get booked.",tags:["CUSTOM"]},
+       {id:"t2c",name:"Skip — sleep",note:"7:30am sumo stable is early enough.",tags:[]},
+     ]},
      {label:"Lunch — east Tokyo",pick:1,options:[
        {id:"l2a",name:"Benitsuru pancakes — Asakusa",note:"Rice flour soufflé pancakes. Queue from 6:30am for same-day ticket. 120 spots. Near Senso-ji.",tags:[]},
        {id:"l2b",name:"Kamachiku Udon — Nezu",note:"Michelin Bib Gourmand. 100-year stone warehouse by Kengo Kuma, glass extension over Japanese garden. Closed Sun/Mon.",tags:[]},
@@ -287,7 +288,7 @@ const DAYS=[
      {label:"Afternoon art",pick:1,options:[
        {id:"a2a",name:"SCAI The Bathhouse — Yanaka",note:"200-year-old bathhouse, best contemporary gallery in Tokyo. Free.",tags:[]},
        {id:"a2b",name:"Mori Art Museum",note:"53rd floor Roppongi Hills. Check November show.",tags:["D"]},
-       {id:"a2c",name:"teamLab Borderless + Azabudai Hills Market",note:"Immersive digital art + extraordinary food hall. Book timed entry.",tags:["BOOK","ARTHUR"]},
+       {id:"a2c",name:"Azabudai Hills Market",note:"Extraordinary food hall — best things in the world under one roof. Minimal Bean to Bar chocolate is a 5-min walk.",tags:[]},
        {id:"a2d",name:"Kayaba Coffee + Yanaka Ginza",note:"Since 1938. Best egg sando. Old Tokyo shitamachi neighbourhood.",tags:["NG"]},
       {id:"a2e",name:"Kakimori — Kuramae",note:"Custom notebooks and ink. Japanese stationery at its finest. Kuramae, 15-min from Asakusa. A beautiful stop.",tags:[]},
      ]},
@@ -301,6 +302,7 @@ const DAYS=[
        {id:"dg2g",name:"Warayaki Gyuu — straw-fire beef",note:"Wagyu seared over burning straw tableside. Theatrical and delicious.",tags:["GROUP"]},
      ]},
      {label:"After dinner — regroup",pick:1,options:[
+       {id:"b1c",name:"Karaoke — Shidax or Big Echo",note:"Private room, all-you-can-drink, tambourines. Quintessential Tokyo group night — everyone together after Amamoto.",tags:["GROUP"]},
        {id:"n2a",name:"Golden Gai — all together",note:"Couple joins after Amamoto. 200+ micro-bars. The perfect reunion point.",tags:[]},
        {id:"n2b",name:"Bar Martha — couple only",note:"SV. 1970s Tannoy, jazz. No photos. Intimate end to an extraordinary dinner.",tags:["SV","ARTHUR"]},
        {id:"n2c",name:"Nonbei Yokocho — Shibuya",note:"Narrow alleyway, glowing lanterns, tiny izakayas. Good for all 6.",tags:[]},
@@ -331,6 +333,8 @@ const DAYS=[
        {id:"a3c",name:"Namco Tokyo arcade — Azabudai Hills",note:"Multi-floor arcade with bar, AI DJ, claw machines, prize games. Inside Azabudai Hills — same building as teamLab. Open late.",tags:[]},
        {id:"a3d",name:"Akihabara arcade crawl",note:"GiGO Akihabara + Super Potato retro games. The real arcade district. 20-min from central Tokyo.",tags:[]},
        {id:"a3e",name:"Azabudai Hills wander",note:"Newest Tokyo mega-development. Teamlab space, Hermès flagship, wild architecture.",tags:[]},
+       {id:"a3f",name:"Single-act kabuki — Kabuki-za",note:"One act (60–80 min), the ideal dose. A few minutes' walk from the Edition. Single-act (makumi) tickets sold online same-day.",tags:["CUSTOM"]},
+       {id:"a3g",name:"Ginza vintage + Itoya",note:"Amore Vintage, RagTag, Kindal for archive luxury, then Itoya's twelve floors of stationery. All walkable from the Edition — complements the Aoyama circuit.",tags:["CUSTOM"]},
      ]},
      {label:"Dinner",pick:1,options:[
        {id:"d3a",name:"Sushi Kojima",note:"Your favourite. 1 Michelin star, Edomae omakase.",tags:["YOU","OMAKASE","BOOK"]},
@@ -353,19 +357,25 @@ const DAYS=[
    ]},
   {date:"Nov 16",title:"Aoyama + DSM → Kyoto afternoon",hotel:"Edition → Sowaka Kyoto",
    fixed:[
-     {id:"f4a",time:"9am",name:"Nezu Museum",note:"Kengo Kuma. 7 National Treasures. November maple garden. Before 10am. At the end of the Omotesando boulevard — Issey Miyake and Prada are on the same stretch on the way.",tags:["NG"]},
+     {id:"f4a",time:"10am",name:"Nezu Museum",note:"Kengo Kuma. 7 National Treasures. November maple garden. Opens 10:00 sharp — timed online ticket required, book ahead and go at opening. At the end of the Omotesando boulevard — Issey Miyake and Prada are on the same stretch on the way.",tags:["NG"]},
      {id:"f4b",time:"Late morning",name:"Aoyama + Omotesando block",note:"QOO · Casanova Vintage · KOMEHYO · pejite 青山 (Mashiko ceramics, narrow alley, 5-chome) · Higashiya wagashi tea · Visvim GYRE · Issey Miyake flagship · Prada Aoyama (Herzog & de Meuron glass building) · Traditional Crafts Aoyama Square.",tags:["NG"]},
      {id:"f4c",time:"Midday",name:"DSM Ginza + Lemaire Ebisu",note:"CDG, Alaïa, The Row. Lemaire: 1960s former residence, shoji screens.",tags:[]},
      {id:"f4d",time:"Afternoon",name:"Tokyo Beauty & Gift Run",note:"Isetan Beauty + Matsumoto Kiyoshi + MEGA Don Quijote Shibuya + @cosme Tokyo if time. Best moment for cosmetics/skincare before Kyoto.",tags:["YOU"]},
      {id:"f4e",time:"3-4pm",name:"Shinkansen Tokyo → Kyoto",note:"2h20. JR Pass. Arrive Kyoto 5:30-6pm. Taxi to Sowaka Gion.",tags:[]},
    ],
    choices:[
+     {label:"Kyoto arrival timing",pick:1,options:[
+       {id:"t4a",name:"Standard — leave Tokyo 3-4pm",note:"Full Tokyo morning + afternoon as planned below. Arrive Kyoto 5:30-6pm, straight to dinner.",tags:[]},
+       {id:"t4b",name:"Early arrival — leave Tokyo ~1pm",note:"Trim the afternoon shopping block. Arrive Kyoto ~3:30pm — time to check into Sowaka and fit in Sanjūsangen-dō (1,001 life-size Kannon statues, one of Kyoto's most striking halls) before dinner. Near Kyoto Station.",tags:[]},
+       {id:"t4c",name:"Early arrival — Higashiyama at dusk",note:"Leave Tokyo ~1pm, arrive ~3:30pm. The classic sequence the plan otherwise skips: Kiyomizu-dera → Sannenzaka → Ninenzaka → Ishibe-koji → Yasaka Pagoda, ending near Sowaka for dinner. Autumn night illuminations usually run mid–late Nov — check dates, they may overlap.",tags:["CUSTOM"]},
+     ]},
      {label:"Morning coffee before Nezu",pick:1,options:[
        {id:"m4a",name:"Glitch Coffee — Ginza",note:"Top-of-top specialty single origin. Near Edition, on the way.",tags:[]},
        {id:"m4b",name:"Bongen — Nihonbashi",note:"Noh theatre-inspired burnt cedar interiors. Bonsai displayed. Worth a detour.",tags:[]},
        {id:"m4c",name:"Koffee Mameya — Omotesando",note:"Precision pour-over. Near Nezu Museum. Staff choose your cup by flavour profile.",tags:["NG"]},
      ]},
      {label:"Lunch — Tokyo before departure",pick:1,options:[
+       {id:"l4d",name:"Sushidokoro Yamato — lunch 11:00–13:00",note:"The impossible one, at lunch instead of dinner. Midnight slot release on TableAll — set the alarm. Ends by 1pm, comfortable for the 3–4pm Shinkansen. If it lands, frees the Nov 15 dinner slot.",tags:["YOU","OMAKASE","BOOK","CUSTOM"]},
        {id:"l4a",name:"Pizza Bar on the 38th — Mandarin Oriental",note:"6-piece pizza omakase. Book 2 months out. World's 50 top pizzerias.",tags:["BOOK"]},
        {id:"l4b",name:"Afuri — yuzu shio ramen",note:"Light yuzu ramen. Omotesando or Harajuku. Quick.",tags:[]},
        {id:"l4c",name:"Gyukatsu Motomura",note:"Wagyu beef katsu you finish on a hot stone yourself. Queue outside.",tags:[]},
@@ -386,10 +396,11 @@ const DAYS=[
   {date:"Nov 17",title:"Fushimi Inari · Arashiyama · Antiques · Kaiseki",hotel:"Sowaka Kyoto",
    fixed:[
      {id:"f5a0",time:"Option",name:"Kokedera Moss Temple (Saihoji)",note:"UNESCO. 120 moss varieties. Book 2 months out at saihoji-kokedera.com. Near Arashiyama — combine with bamboo grove. Max 2 people, ¥4,000.",tags:["BOOK"]},
-     {id:"f5a",time:"6:30am",name:"Fushimi Inari — summit walk",note:"Empty vermilion gates, mist. Climb to the top. Blessed sake at summit stalls. 2 hours return.",tags:[]},
+     {id:"f5a",time:"6:30am",name:"Fushimi Inari — dawn walk",note:"Empty vermilion gates, mist. Turn back at Yotsutsuji (~45 min, the city view) to hold the 8:30 Arashiyama slot — the full summit is 2h return and pushes Arashiyama to ~9:45, when the grove is no longer empty. Fushimi → Arashiyama is 40–50 min across town.",tags:[]},
      {id:"f5b",time:"8:30am",name:"Arashiyama bamboo grove + Tenryu-ji",note:"Right after Fushimi Inari while still empty. Peak November maple in Tenryu-ji garden.",tags:[]},
+     {id:"f5b2",time:"~3:30-4:15pm",name:"Adashino Nenbutsu-ji — secret bamboo grove",note:"The quiet alternative to the Arashiyama crowds. 8,000 stone statues + its own small bamboo grove. Go in the last hour before 4:30pm close — genuinely empty. ¥500, cash only.",tags:[]},
      {id:"f5c",time:"Late morning",name:"Shinmonzen + Furumonzen antiques",note:"Best antique streets in Japan. Lacquer, ceramics, scrolls. NG essential.",tags:["NG"]},
-     {id:"f5d",time:"Afternoon",name:"Craft + scent circuit: Aritsugu · Nishiki · Kaikado · Kamiji Kakimoto · APFR · Taiga Takahashi",note:"Knives engraved since 1560 · pickles + yuba · tea caddies since 1875 · washi paper since 1845 · APFR fragrance 120yr townhouse Teramachi · Taiga Takahashi Gion back alley: store/gallery/tea room, one of the best retail experiences in Japan.",tags:["NG"]},
+     {id:"f5d",time:"Afternoon",name:"Craft + scent circuit: Aritsugu · Nishiki · Kaikado · Kamiji Kakimoto · APFR · Taiga Takahashi · Ippodo Tea",note:"Knives engraved since 1560 · pickles + yuba · tea caddies since 1875 · washi paper since 1845 · APFR fragrance 120yr townhouse Teramachi · Taiga Takahashi Gion back alley: store/gallery/tea room, one of the best retail experiences in Japan · Ippodo flagship tea shop + tasting room, same Teramachi stretch.",tags:["NG"]},
    ],
    choices:[
      {label:"Morning coffee — Kyoto",pick:1,options:[
@@ -400,6 +411,8 @@ const DAYS=[
      {label:"Lunch — Kyoto",pick:1,options:[
        {id:"l5a",name:"Okutan Nanzenji — Buddhist tofu since 1635",note:"Yudofu in a garden. Meditative and light.",tags:[]},
        {id:"l5b",name:"Honke Owariya — soba since 1465",note:"Oldest soba restaurant in Japan. Teramachi-dori.",tags:[]},
+       {id:"l5b2",name:"suba — standing soba",note:"Tabelog 100 soba selection. Modern tachigui (standing) soba in a converted old house, ceramic art counters by Tomonari Hashimoto. Cashless only. Kiyomizu-Gojo / Kawaramachi Matsubara.",tags:[]},
+       {id:"l5b3",name:"Hikiniku to Kome — Gion",note:"Charcoal-grilled hamburger steaks (up to 3) over freshly cooked rice in an iron pot, miso soup, free raw egg. Converted machiya, once a geisha reception hall. Advance sign-up required — check hikinikutocome.com/kyoto.",tags:["BOOK"]},
        {id:"l5c",name:"Nishiki Market eat-as-you-go",note:"Pickles, yuba, matcha soft serve. Standing lunch while shopping.",tags:["NG"]},
        {id:"l5d",name:"Kyo Amahare (Sabo Kyo)",note:"Contemporary Japanese tea in a machiya warehouse. Opened spring 2024. Reserve ahead.",tags:["BOOK"]},
      ]},
@@ -414,21 +427,23 @@ const DAYS=[
      ]},
      {label:"After dinner bar",pick:1,options:[
        {id:"n5a",name:"Bee's Knees",note:"Yellow door. Art Deco speakeasy. NG + SV.",tags:["NG","SV"]},
+       {id:"n5a2",name:"Brown Sugar — Pontocho",note:"Intimate upstairs listening bar. Shoes off at the door. Deep whisky list, soul/funk/jazz vinyl. Small — caps around 5 people. No reservations, just show up.",tags:["SV"]},
        {id:"n5b",name:"Jazz Spot Yamatoya",note:"SV. Since 1958. Basement Kiyamachi-dori.",tags:["SV"]},
        {id:"n5c",name:"Music Bar 1G",note:"Fridge door entrance. Underground Kyoto.",tags:["YOU"]},
        {id:"n5d",name:"Hachimonjiya",note:"Kai Fusayoshi's bar. 50 years of Kyoto photography.",tags:[]},
+       {id:"n5e",name:"Kodai-ji night illumination",note:"Autumn light-up (usually mid–late Nov — check dates). Zen garden + bamboo lit after dark, ~10 min from Sowaka. If it's running, worth taking over the bar tonight.",tags:["CUSTOM"]},
      ]},
    ]},
   {date:"Nov 18",title:"Hiroshima · Peace Memorial · Miyajima",hotel:"Sowaka Kyoto",
    fixed:[
-     {id:"f6a",time:"7:00am",name:"Shinkansen Kyoto → Hiroshima",note:"~50 min. JR Pass. Tram to Peace Park 15 min from Hiroshima station.",tags:[]},
+     {id:"f6a",time:"7:00am",name:"Shinkansen Kyoto → Hiroshima",note:"~1h40 by Nozomi (SmartEX) — arrive ~8:40. Tram to Peace Park 15 min from Hiroshima station.",tags:[]},
      {id:"f6b",time:"9:00am",name:"Atomic Bomb Dome + Peace Memorial Park",note:"Approach from the river side on foot. 30 min before the museum.",tags:[]},
      {id:"f6c",time:"10:00am",name:"Peace Memorial Museum",note:"One of the most important museums in the world. Allow 2.5-3 hours.",tags:[]},
      {id:"f6d",time:"1:00pm",name:"Okonomimura — Hiroshima-yaki",note:"6-floor building of okonomiyaki stalls. Hiroshima-style with noodles inside. The definitive Hiroshima lunch.",tags:[]},
      {id:"f6e",time:"2:30pm",name:"Miyajima — floating torii + Itsukushima Shrine",note:"JR train + ferry both covered by JR Pass. High tide 2-5pm is ideal — torii appears to float. Allow 2 hours.",tags:[]},
      {id:"f6f",time:"Optional",name:"Simose Art Museum — Otake",note:"World's Most Beautiful Museum 2024 (Prix Versailles). Shigeru Ban. 8 glass pavilions on water. 40 min JR + 10 min bus from Hiroshima. 30 min from Miyajima direction. Add this if you start Hiroshima early.",tags:[]},
      {id:"f6g",time:"4:30pm",name:"Daisho-in Temple — Miyajima",note:"10-min walk from shrine. Most atmospheric Buddhist temple on the island. Almost no tourists.",tags:[]},
-     {id:"f6h",time:"6:30pm",name:"Shinkansen Hiroshima → Kyoto",note:"Arrive Kyoto ~7:45pm. Last evening in Kyoto.",tags:[]},
+     {id:"f6h",time:"6:30pm",name:"Shinkansen Hiroshima → Kyoto",note:"~1h40 — arrive Kyoto ~8:10pm. Last evening in Kyoto.",tags:[]},
    ],
    choices:[
      {label:"Dinner — last Kyoto night",pick:1,options:[
@@ -442,30 +457,35 @@ const DAYS=[
    fixed:[
      {id:"f7a",time:"9:00am",name:"Kinkaku-ji — Golden Temple",note:"9am opening. Gold leaf reflected in Mirror Lake. November maple at peak. ¥500.",tags:[]},
      {id:"f7b",time:"10:00am",name:"Garden of Fine Arts — Kitayama",note:"Tadao Ando. Monet, Da Vinci on ceramic tiles. Almost no tourists. Near Kinkaku-ji.",tags:[]},
-     {id:"f7c",time:"11:30am",name:"Shinkansen Kyoto → Okayama",note:"~50 min. JR Pass. Then JR Uno Line to Uno Station ~50 min.",tags:[]},
-     {id:"f7d",time:"1:30pm",name:"Ferry Uno → Miyanoura Port, Naoshima",note:"20 min. 300 yen. Not JR Pass. Rent bikes at port.",tags:[]},
-     {id:"f7e",time:"2:30pm",name:"Art House Project — Honmura village",note:"Buy tickets at Honmura Lounge. Turrell (Backside of the Moon), Sugimoto (Ango Shrine), Miyajima. Allow 2 hours.",tags:["BOOK"]},
-     {id:"f7f",time:"5:00pm",name:"Check into Benesse House",note:"Free shuttle from Honmura. Sea view rooms. Kusama sculptures along coast path at dusk.",tags:[]},
-     {id:"f7g",time:"Evening",name:"Setomae Sushi Nagi — Naoshima (CONFIRMED)",note:"Freshest Seto Inland Sea fish. Small counter. Confirmed booking via Benesse concierge.",tags:[]},
+     {id:"f7c2",time:"11am–4pm",name:"Free block in Kyoto",note:"Full free day before the transfer. Lunch, last-minute shopping, or revisit the craft circuit from Nov 17 (Aritsugu, Nishiki Market, Kaikado, Kamiji Kakimoto, APFR, Taiga Takahashi) — whatever didn't get done.",tags:[]},
+     {id:"f7c",time:"~4:15–4:30pm",name:"Shinkansen Kyoto → Okayama",note:"The real last comfortable departure. ~50 min. JR Pass.",tags:[]},
+     {id:"f7c3",time:"~5:25pm",name:"JR Uno Line Okayama → Uno",note:"~50 min. Connects straight to the ferry.",tags:[]},
+     {id:"f7d",time:"~6:30pm",name:"Ferry Uno → Miyanoura Port, Naoshima",note:"20 min. 300 yen. Not JR Pass. Arrive Miyanoura ~6:50pm.",tags:[]},
+     {id:"f7f",time:"~7:10pm",name:"Check into Benesse House",note:"Drop bags, change. Sea view rooms. Time to sit down at 8pm without rushing.",tags:[]},
+     {id:"f7g",time:"8:00pm",name:"Setomae Sushi Nagi — Naoshima (CONFIRMED)",note:"Freshest Seto Inland Sea fish. Small counter. Confirmed booking via Benesse concierge.",tags:[]},
    ],
    choices:[
      {label:"Morning coffee before Kinkaku-ji",pick:1,options:[
        {id:"m7a",name:"WIFE & HUSBAND — Kitaoji",note:"Real couple. Pour-over. Honey cheese toast. Near Kinkaku-ji. Phone: 075-201-7324.",tags:["YOU","ARTHUR","BOOK"]},
        {id:"m7b",name:"Skip — straight to Kinkaku-ji at 9am",note:"9am is the best light. Don't delay.",tags:[]},
      ]},
-     {label:"Afternoon art on Naoshima (before dinner)",pick:1,options:[
+     {label:"Naoshima art — only if you catch an earlier ferry",pick:1,options:[
        {id:"a7a",name:"Valley Gallery — Yoshitomo Nara",note:"Oval concrete in the hillside. Natural light only. Silent. 15 min bike.",tags:[]},
        {id:"a7b",name:"Lee Ufan Museum",note:"Ando + minimal mark-making. 15 min from Benesse.",tags:[]},
        {id:"a7c",name:"Benesse House Museum",note:"The art collection you're sleeping inside. Sea view terrace.",tags:[]},
        {id:"a7d",name:"Rest — onsen + sea view",note:"Save energy. Setomae is tonight.",tags:[]},
      ]},
    ]},
-  {date:"Nov 20",title:"Naoshima · Chichu · Lee Ufan → Spontaneous day",hotel:"Flexible",
+  {date:"Nov 20",title:"Naoshima · Chichu → straight to Tokyo",hotel:"Yuen Bettei Daita",
    fixed:[
      {id:"f8a",time:"9:00am",name:"Chichu Art Museum",note:"Book chichu.jp in advance. 5 Monets in natural light only. Turrell Skyspace. Walter De Maria. Allow 2 hours.",tags:["BOOK"]},
      {id:"f8b",time:"11:30am",name:"Lee Ufan Museum",note:"15 min shuttle. Ando + Lee Ufan. Silence as medium. 1 hour.",tags:[]},
      {id:"f8c",time:"12:30pm",name:"Valley Gallery — Yoshitomo Nara",note:"If not done Nov 19. Oval concrete, natural light only.",tags:[]},
-     {id:"f8d",time:"2:00pm",name:"Ferry Naoshima → Uno Port",note:"20 min. Then decide where to go.",tags:[]},
+     {id:"f8c2",time:"1:30pm",name:"Art House Project — Honmura village",note:"Moved from Nov 19 — the afternoon now has room for it. Buy tickets at Honmura Lounge. Turrell (Backside of the Moon), Sugimoto (Ango Shrine), Miyajima. Allow 2 hours.",tags:["BOOK"]},
+     {id:"f8d",time:"~5:45pm",name:"Ferry Naoshima → Uno Port",note:"The one to aim for. 20 min. Arrive Uno ~6:05pm.",tags:[]},
+     {id:"f8e",time:"~6:20pm",name:"JR Uno Line Uno → Okayama",note:"~50 min. Arrive Okayama ~7:10pm.",tags:[]},
+     {id:"f8f",time:"~7:30pm",name:"Nozomi Shinkansen Okayama → Tokyo",note:"Nozomi runs every 15–20 min at this hour. ~3h15. Arrive Tokyo Station just before 11pm.",tags:[]},
+     {id:"f8g",time:"~11:00pm",name:"Taxi to Yuen Bettei Daita",note:"Tokyo Station → Shimokitazawa. Arrive ~11:30pm.",tags:[]},
    ],
    choices:[
      {label:"Lunch — last on Naoshima",pick:1,options:[
@@ -473,19 +493,13 @@ const DAYS=[
        {id:"l8b",name:"Umi no Ie — Miyaura port",note:"Local izakaya at the ferry terminal. Fresh octopus, sea bream.",tags:[]},
        {id:"l8c",name:"Eat at Okayama station",note:"Skip island lunch. Excellent ekiben (station bento) at Okayama.",tags:[]},
      ]},
-     {label:"Spontaneous Nov 20 — where to?",pick:1,options:[
-       {id:"s8a0",name:"Stop in Takamatsu — 1 night",note:"Naoshima → Takamatsu high-speed boat 30 min → check in. Evening: walk port area, Marugame-machi arcade, dinner in town.",tags:[]},
-      {id:"s8a",name:"Straight to Tokyo — arrive early evening",note:"Okayama → Nozomi → Tokyo ~3h45. Arrive Yuen Bettei ~7pm. First night in Tokyo II.",tags:[]},
-       {id:"s8b",name:"Ukai Toriyama — Mt Takao + dinner",note:"Okayama → Tokyo → Keio Line Takaosanguchi (55 min from Shinjuku). November foliage hike then dinner: irori charcoal chicken, 20,000sqm garden, private tatami. Book ahead.",tags:["BOOK"]},
-       {id:"s8c",name:"Stop in Osaka for the evening",note:"Okayama → Osaka ~45 min. Dotonbori, Namba, Shinsekai. Takoyaki, kushikatsu, standing bars. Shinkansen to Tokyo next morning.",tags:[]},
-       {id:"s8d",name:"Stop in Kyoto — one last time",note:"Okayama → Kyoto ~45 min. Afternoon in Gion, Bee's Knees one last time. Night train to Tokyo.",tags:[]},
-       {id:"s8e",name:"Hakone — onsen with Fuji view",note:"Okayama → Tokyo → Odakyu line to Hakone ~2h total. Overnight ryokan, Fuji views, outdoor onsen.",tags:[]},
-     ]},
-     {label:"Dinner — depending on route",pick:1,options:[
-       {id:"d8a",name:"Tokyo — Virtù for arrival drinks",note:"39th floor Four Seasons Otemachi. Asia's 50 Best Bars. The Tokyo II re-entry.",tags:[]},
-       {id:"d8b",name:"Osaka — Dotonbori street food",note:"Takoyaki, okonomiyaki, kushikatsu at Daruma. Loud, fun, cheap.",tags:[]},
-       {id:"d8c",name:"Kyoto — Bee's Knees farewell",note:"Yellow door one last time.",tags:["NG","SV"]},
-       {id:"d8d",name:"Hakone — kaiseki at the ryokan",note:"Seasonal kaiseki included in most Hakone ryokan stays.",tags:[]},
+     {label:"Nov 20 evening — realistically, a travel night",pick:1,options:[
+       {id:"d8e1",name:"Ichiran — near Yuen Bettei",note:"★ The honest answer. 24-hour solo booth ramen. Nothing else on the list seats at 11pm — this is genuinely perfect for exactly this arrival.",tags:[]},
+       {id:"d8e2",name:"Ekiben + a bottle from Okayama Station",note:"★ The elegant move. Good station bento and something to drink from Okayama Station, eaten on the 3h15 train. Count the 20th as a travel evening, not a dinner night.",tags:[]},
+       {id:"d8a",name:"Tokyo — Virtù nightcap",note:"39th floor Four Seasons Otemachi. Asia's 50 Best Bars. Only if you have energy left after 11:30pm arrival — a drink, not dinner.",tags:[]},
+       {id:"d8b",name:"Osaka — Dotonbori street food",note:"Only relevant if you break the direct Tokyo route.",tags:[]},
+       {id:"d8c",name:"Kyoto — Bee's Knees farewell",note:"Only relevant if you break the direct Tokyo route.",tags:["NG","SV"]},
+       {id:"d8d",name:"Hakone — kaiseki at the ryokan",note:"Only relevant if you break the direct Tokyo route.",tags:[]},
      ]},
    ]},
   {date:"Nov 21",title:"Daita · Gotokuji · Shimokitazawa Creative Day",hotel:"Yuen Bettei Daita",
@@ -580,7 +594,7 @@ const DAYS=[
 ];
 
 
-const KEY="jp26_v5";
+const KEY="jp26_v6";
 
 // Helpers
 const BUYS = [
@@ -681,27 +695,22 @@ function OCard({opt,state,onToggle,musts,toggleMust,onScratch,onMove,isBooked,on
 function AddCustom({onAdd}) {
   const [open,setOpen]=useState(false);
   const [name,setName]=useState("");
-  const [loading,setLoading]=useState(false);
+  const [note,setNote]=useState("");
   if(!open) return <button onClick={()=>setOpen(true)} style={{marginTop:"8px",width:"100%",padding:"8px",background:"transparent",border:"1px dashed #D4C4A8",borderRadius:"6px",fontFamily:"monospace",fontSize:"10px",letterSpacing:"0.08em",textTransform:"uppercase",color:MID,cursor:"pointer"}}>+ Add your own</button>;
-  async function add() {
+  function add() {
     if(!name.trim()) return;
-    setLoading(true);
-    try {
-      const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:200,system:'Japan trip Nov 2026. Reply ONLY with JSON: {"name":"...","note":"1 sentence","tags":[]}. Add "BOOK" if reservation needed.',messages:[{role:"user",content:name}]})});
-      const d=await r.json();
-      const t=d.content?.find(b=>b.type==="text")?.text||"";
-      const p=JSON.parse(t.replace(/```json|```/g,"").trim());
-      onAdd({id:"c_"+Date.now(),name:p.name||name,note:p.note||"",tags:p.tags||["CUSTOM"]});
-      setName("");setOpen(false);
-    } catch(e){console.error(e);}
-    setLoading(false);
+    onAdd({id:"c_"+Date.now(),name:name.trim(),note:note.trim(),tags:["CUSTOM"]});
+    setName("");setNote("");setOpen(false);
   }
   return <div style={{marginTop:"8px",padding:"10px",background:"#F5F0E8",border:"1px dashed #D4C4A8",borderRadius:"6px"}}>
-    <div style={{fontFamily:"monospace",fontSize:"9px",color:MID,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"6px"}}>Type a place — Claude describes it</div>
-    <div style={{display:"flex",gap:"6px"}}>
-      <input value={name} onChange={e=>setName(e.target.value)} onKeyDown={e=>e.key==="Enter"&&add()} placeholder="e.g. Bar High Five…" style={{flex:1,padding:"8px 10px",background:CARD,border:"1px solid "+BORD,borderRadius:"6px",fontFamily:"inherit",fontSize:"13px",color:DARK,outline:"none"}}/>
-      <button onClick={add} disabled={loading||!name.trim()} style={{padding:"8px 12px",background:loading?"#D8D2C8":GOLD,color:"#fff",border:"none",borderRadius:"6px",fontFamily:"monospace",fontSize:"10px",cursor:loading?"wait":"pointer"}}>{loading?"…":"Add"}</button>
-      <button onClick={()=>{setOpen(false);setName("");}} style={{padding:"8px 10px",background:"transparent",border:"1px solid "+BORD,borderRadius:"6px",color:MID,cursor:"pointer",fontSize:"12px"}}>✕</button>
+    <div style={{fontFamily:"monospace",fontSize:"9px",color:MID,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"6px"}}>Add your own option</div>
+    <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+      <input autoFocus value={name} onChange={e=>setName(e.target.value)} onKeyDown={e=>e.key==="Enter"&&add()} placeholder="Name…" style={{padding:"8px 10px",background:CARD,border:"1px solid "+BORD,borderRadius:"6px",fontFamily:"inherit",fontSize:"13px",color:DARK,outline:"none"}}/>
+      <input value={note} onChange={e=>setNote(e.target.value)} onKeyDown={e=>e.key==="Enter"&&add()} placeholder="Note (optional)…" style={{padding:"8px 10px",background:CARD,border:"1px solid "+BORD,borderRadius:"6px",fontFamily:"inherit",fontSize:"12px",color:MID,outline:"none"}}/>
+      <div style={{display:"flex",gap:"6px"}}>
+        <button onClick={add} disabled={!name.trim()} style={{flex:1,padding:"8px 12px",background:name.trim()?GOLD:"#D8D2C8",color:"#fff",border:"none",borderRadius:"6px",fontFamily:"monospace",fontSize:"10px",cursor:name.trim()?"pointer":"default"}}>Add</button>
+        <button onClick={()=>{setOpen(false);setName("");setNote("");}} style={{padding:"8px 10px",background:"transparent",border:"1px solid "+BORD,borderRadius:"6px",color:MID,cursor:"pointer",fontSize:"12px"}}>✕</button>
+      </div>
     </div>
   </div>;
 }
@@ -861,10 +870,7 @@ function ArchiveView({days,scratched,setScratched}) {
     </div>)}</div>}
   </div>;
 }
-function PackView() {
-  const [packed,setPacked]=useState({});
-  useEffect(()=>{window.storage?.get("jp26_pack")?.then(r=>{if(r?.value)setPacked(JSON.parse(r.value));}).catch(()=>{});},[]);
-  useEffect(()=>{window.storage?.set("jp26_pack",JSON.stringify(packed))?.catch(()=>{});},[packed]);
+function PackView({packed,setPacked}) {
   const total=PACKING.reduce((a,c)=>a+c.items.length,0),done=Object.values(packed).filter(Boolean).length;
   return <div style={{padding:"1rem 1rem 5rem"}}>
     <div style={{display:"flex",alignItems:"baseline",gap:"12px",marginBottom:"16px"}}><div style={{fontSize:"17px",color:DARK,fontStyle:"italic"}}>Packing list</div><div style={{fontFamily:"monospace",fontSize:"11px",color:done===total?GRN:GOLD}}>{done}/{total} packed</div></div>
@@ -875,11 +881,8 @@ function PackView() {
     </div>)}
   </div>;
 }
-function BookingView() {
-  const [done,setDone]=useState({});
+function BookingView({done,setDone}) {
   const [cal,setCal]=useState(false);
-  useEffect(()=>{window.storage?.get("jp26_book")?.then(r=>{if(r?.value)setDone(JSON.parse(r.value));}).catch(()=>{});},[]);
-  useEffect(()=>{window.storage?.set("jp26_book",JSON.stringify(done))?.catch(()=>{});},[done]);
   const uC={critical:RED,high:GOLD,medium:"#A855F7",low:GRN};
   const uL={critical:"Do now",high:"Aug–Oct",medium:"Sep–Oct",low:"Few weeks"};
   const uO={critical:0,high:1,medium:2,low:3};
@@ -938,23 +941,12 @@ function MapView() {
   </div>;
 }
 
-function BuysView() {
-  const [checked,setChecked]=useState({});
-  const [custom,setCustom]=useState([]);
+function BuysView({checked,setChecked,custom,setCustom}) {
   const [addOpen,setAddOpen]=useState(false);
   const [newName,setNewName]=useState("");
   const [newNote,setNewNote]=useState("");
   const [newCity,setNewCity]=useState("Tokyo");
   const [newPhoto,setNewPhoto]=useState(null);
-
-  useEffect(()=>{
-    window.storage?.get("jp26_buys")?.then(r=>{if(r?.value){const d=JSON.parse(r.value);setChecked(d.checked||{});setCustom(d.custom||[]);}}).catch(()=>{});
-  },[]);
-
-  useEffect(()=>{
-    window.storage?.set("jp26_buys",JSON.stringify({checked,custom}))?.catch(()=>{});
-  },[checked,custom]);
-
   function handlePhoto(e) {
     const file = e.target.files?.[0];
     if(!file) return;
@@ -1060,6 +1052,10 @@ export default function App() {
   const [syncStatus,setSyncStatus]=useState(null);
   const [booked,setBooked]=useState({});
   const [editMode,setEditMode]=useState(false);
+  const [packed,setPacked]=useState({});
+  const [bookingDone,setBookingDone]=useState({});
+  const [buysChecked,setBuysChecked]=useState({});
+  const [buysCustom,setBuysCustom]=useState([]);
   const SKEY="jp26_shared_v1";
   useEffect(()=>{
     const load=(d)=>{
@@ -1070,6 +1066,10 @@ export default function App() {
       if(d.notes) setNotes(d.notes);
       if(d.booked) setBooked(d.booked);
       if(d.days) setDays(d.days);
+      if(d.packed) setPacked(d.packed);
+      if(d.bookingDone) setBookingDone(d.bookingDone);
+      if(d.buysChecked) setBuysChecked(d.buysChecked);
+      if(d.buysCustom) setBuysCustom(d.buysCustom);
     };
     if(window.storage){
       window.storage?.get(KEY).then(r=>{if(r?.value)load(JSON.parse(r.value));}).catch(()=>{});
@@ -1078,10 +1078,10 @@ export default function App() {
     }
   },[]);
   useEffect(()=>{
-    const data=JSON.stringify({selections,musts,scratched,hiddenFixed,notes,booked,days});
+    const data=JSON.stringify({selections,musts,scratched,hiddenFixed,notes,booked,days,packed,bookingDone,buysChecked,buysCustom});
     if(window.storage){window.storage.set(KEY,data).catch(()=>{});}
     else{try{localStorage.setItem(KEY,data);}catch(e){}}
-  },[selections,musts,scratched,hiddenFixed,notes,booked,days]);
+  },[selections,musts,scratched,hiddenFixed,notes,booked,days,packed,bookingDone,buysChecked,buysCustom]);
   useEffect(()=>{
     if(!shareMode) return;
     setSyncStatus("syncing");
@@ -1114,10 +1114,10 @@ export default function App() {
       {view==="build"&&<BuildView days={days} setDays={setDays} selections={selections} setSelections={setSelections} musts={musts} setMusts={setMusts} scratched={scratched} setScratched={setScratched} hiddenFixed={hiddenFixed} setHiddenFixed={setHiddenFixed} notes={notes} setNotes={setNotes} editMode={editMode} booked={booked} setBooked={setBooked}/>}
       {view==="must"&&<MustView days={days} selections={selections} musts={musts} setMusts={setMusts}/>}
       {view==="archive"&&<ArchiveView days={days} scratched={scratched} setScratched={setScratched}/>}
-      {view==="pack"&&<PackView/>}
-      {view==="book"&&<BookingView/>}
+      {view==="pack"&&<PackView packed={packed} setPacked={setPacked}/>}
+      {view==="book"&&<BookingView done={bookingDone} setDone={setBookingDone}/>}
       {view==="map"&&<MapView/>}
-      {view==="buys"&&<BuysView/>}
+      {view==="buys"&&<BuysView checked={buysChecked} setChecked={setBuysChecked} custom={buysCustom} setCustom={setBuysCustom}/>}
       
     </div>
     </ErrorBoundary>
